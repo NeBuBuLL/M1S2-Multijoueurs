@@ -24,6 +24,7 @@ var listOfPlayers = {};
 io.on('connection', (socket) => {
 	let emitStamp;
 	let connectionStamp = Date.now();
+	let nbUpdatesPerSeconds;
 
 	// Pour le ping/pong mesure de latence
 	setInterval(() => {
@@ -40,6 +41,17 @@ io.on('connection', (socket) => {
 
 		socket.emit("data", currentTime, timeElapsedSincePing, serverTimeElapsedSinceClientConnected);
 	});
+
+
+	setInterval(() => {
+        nbUpdatesPerSeconds = 10;
+        socket.emit("heartbeat");
+    },1000/nbUpdatesPerSeconds);
+
+	socket.on("boomboom", () =>{
+		socket.emit("boom boom du coeur", nbUpdatesPerSeconds);
+	});
+	
 
 	// when the client emits 'sendchat', this listens and executes
 	socket.on('sendchat', (data) => {

@@ -84,6 +84,9 @@ function init() {
   socket.on("ping", () => {
     send("pongo");
   });
+  socket.on("heartbeat", () => {
+    send("boomboom");
+  });
 
   socket.on("data", (timestamp, rtt, serverTime) => {
     //console.log("rtt time received from server " + rtt);
