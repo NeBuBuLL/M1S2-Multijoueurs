@@ -4,6 +4,18 @@ let canvas, ctx, mousePos;
 let allPlayers = {};
 let target = {x:150, y:200, radius:50, color:'yellow'};
 
+class obstacle {
+  constructor(x, y, width, height, color, vy, range) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    this.color = color;
+    this.vy = vy;
+    this.range  = range;
+  }
+}
+
 let obstacles = [];
 
 // for time based animation
@@ -29,8 +41,8 @@ function startGame() {
 }
 
 function createObstacles() {
-  let o1 = {x:50, y:50, width:20, height:100, color:"black", vy:50, range:110}
-  let o2 = {x:150, y:50, width:20, height:50, color:"orange", vy:30, range:100}
+  let o1 = new obstacle(50,50,20,100,"black",50, 110);
+  let o2 = new obstacle(150,50, 20,50,"orange",30,100);
   obstacles.push(o1);
   obstacles.push(o2);
 }
@@ -187,7 +199,7 @@ function drawObstacles() {
 
     o.y += calcDistanceToMove(delta,o.vy);
 
-    if(o.y > 250) {
+    if(o.y > 250  ) {
       console.log("y > 250 we reverse the speed");
       // we must put the obstacle back at contact point
       o.y = 249;

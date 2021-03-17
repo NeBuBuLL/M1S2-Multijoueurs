@@ -1,21 +1,44 @@
 #myCanvas {
-    border: 1px solid red;
-    background-color:pink;
-  }
+  border: 1px solid red;
+  background-color:pink;
+}
 
-  .userList {
-    float:left;
-    width:100px;
-    height:300px;
-    border-right:1px solid black;
-    padding:10px;
-    overflow:scroll-y;
-  }
+.userList {
+  float:left;
+  width:100px;
+  height:300px;
+  border-right:1px solid black;
+  padding:10px;
+  overflow:scroll-y;
+}
 
-  .chatMessages {
-    float:left;
-    width:300px;
-    height:250px;
-    overflow:scroll-y;
-    padding:10px;
-  }
+.chatMessages {
+  float:left;
+  width:300px;
+  height:250px;
+  overflow:scroll-y;
+  padding:10px;
+}
+
+.sliders {
+  border:1px solid black;
+  text-align: center;
+  border-radius: 5px;
+  min-width:100px;
+  background-color: rgba(255,215,0,0.1);
+}
+.ping
+{
+  border:1px solid black;
+  text-align: center;
+  border-radius: 5px;
+  min-width:100px;
+  background-color: rgba(214, 3, 203, 0.1);
+}
+.time {
+  border:1px solid black;
+  text-align: center;
+  border-radius: 5px;
+  min-width:100px;
+  background-color: rgba(3, 200, 214, 0.1);
+}
