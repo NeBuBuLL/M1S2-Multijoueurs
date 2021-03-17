@@ -138,5 +138,7 @@ function changeUpdatesNumber(value) {
 
   let spanDelayValue = document.querySelector("#updates_per_second");
   spanDelayValue.innerHTML = updatesPerSeconds;
+  
+  socket.emit("updates_per_second",updatesPerSeconds);
 }
 
