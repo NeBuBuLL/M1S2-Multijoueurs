@@ -21,10 +21,12 @@ app.get('/', (req, res) => {
 var playerNames = {};
 var listOfPlayers = {};
 
+let heartInterval;
+
 io.on('connection', (socket) => {
 	let emitStamp;
 	let connectionStamp = Date.now();
-	let nbUpdatesPerSeconds;
+	let updatesPerSeconds=5;
 
 	// Pour le ping/pong mesure de latence
 	setInterval(() => {
@@ -43,13 +45,17 @@ io.on('connection', (socket) => {
 	});
 
 
-	setInterval(() => {
-        nbUpdatesPerSeconds = 10;
+	// heartbeat with interval
+	function heartbeat() {
         socket.emit("heartbeat");
-    },1000/nbUpdatesPerSeconds);
-
+	}
+	// to keep a track on the interval
+	// if we dont want to keep a track,
+	// we could do like the setInterval lambda function for the ping 
+	heartInterval = setInterval(heartbeat, 1000/updatesPerSeconds);
+	
 	socket.on("boomboom", () =>{
-		socket.emit("boom boom du coeur", nbUpdatesPerSeconds);
+		socket.emit("boom boom du coeur", updatesPerSeconds);
 	});
 	
 

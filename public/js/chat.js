@@ -124,3 +124,12 @@ function changeArtificialLatency(value) {
   let spanDelayValue = document.querySelector("#delay");
   spanDelayValue.innerHTML = artificialLatencyDelay;
 }
+
+// Function similar to changeArtificialLatency but for the number of updates per seconds
+function changeUpdatesNumber(value) {
+  updatesPerSeconds = parseInt(value);
+
+  let spanDelayValue = document.querySelector("#updates_per_second");
+  spanDelayValue.innerHTML = updatesPerSeconds;
+}
+
