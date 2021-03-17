@@ -65,6 +65,19 @@ io.on('connection', (socket) => {
 		io.sockets.emit('updatechat', socket.username, data);
 	});
 
+	// When a client send a message to ask the server to update the update frequency
+	socket.on('updates_per_second', (data) => {
+		updatesPerSeconds = data;
+		clearInterval(heartInterval);
+		heartInterval = setInterval(heartbeat, 1000 / updatesPerSeconds);
+	
+		// Tell the other clients taht the update frequency has changed 
+		// and that they have to update it.
+		io.emit("updates_per_second", updatesPerSeconds);
+		socket.broadcast.emit('updatenb', updatesPerSeconds);
+
+	})
+
 	// when the client emits 'sendchat', this listens and executes
 	socket.on('sendpos', (newPos) => {
 		// we tell the client to execute 'updatepos' with 2 parameters

@@ -84,6 +84,7 @@ function init() {
   socket.on("ping", () => {
     send("pongo");
   });
+
   socket.on("heartbeat", () => {
     send("boomboom");
   });
@@ -107,6 +108,12 @@ function init() {
   
   });
 
+  // WIP 
+  // Need to change the slider and value for the client
+  // Need to change the slider and value for the client if an other client change it
+  socket.on("updates_per_second", (data) => {
+    console.log("Changing updates per second to : " + data);
+  });
   // we start the Game
   startGame();
 }
