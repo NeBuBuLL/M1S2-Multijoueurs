@@ -1,5 +1,6 @@
 #myCanvas {
   border: 1px solid red;
+ 
   background-color:pink;
 }
 
@@ -42,3 +43,5 @@
   min-width:100px;
   background-color: rgba(3, 200, 214, 0.1);
 }
+
+
